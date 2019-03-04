@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Calendar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <style>
+  	table {
+table-layout: fixed;
+width: 100%;
+border: solid 1px black;
+border-collapse: collapse;
+margin-bottom: 40px;
+
+}
+
+table th {
+  background-color: blue;
+  border: solid 1px black;
+  height: 30px;
+  color: white;
+  font-size: 4vw
+}
+
+table td {
+  border: solid 1px black;
+  vertical-align: top;
+  font-size: 3vw;
+  height: 80px;
+  font-weight: bold;
+}
+.eventName {
+  font-weight: 900;
+  color: deeppink;
+}
+.month {
+  width: 100%;
+  text-align: center;
+  background-color: green;
+  color: white;
+  font-size: 5vw;
+  margin-bottom: 0px;
+}
+
+.label {
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-size: 7vw;
+  margin-bottom: 40px;
+}
+.event {
+  background-color: lemonchiffon;
+}
+#modal-main {
+  display: none;
+  position:fixed;
+  top: 100px;
+  padding: 10px;
+  background-color: white;
+  width: 90%;
+  z-index: 2;
+  text-align: center;
+  border-radius: 10px
+}
+
+#modal-bg {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1
+}
+
+body {
+  z-index: 0
+}
+
+#modalTitle {
+  text-align: center;
+  font-size: 4.3vw;
+  width: 80%;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+#modal-main p {
+  text-align: center;
+  font-size: 4vw;
+  margin: 20px auto;
+  width: 80%;
+}
+
+#modal-main a {
+  text-align: center;
+
+}
+.appeal {
+  display: none;
+}
+
+.click {
+  display:  none;
+}
+
+.btn-square-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+
+    @media all and (min-width: 480px) {
+      .label {
+        font-size: 3vw;
+        padding: 5px;
+      }
+     	.month {
+          font-size: 2.5vw;
+        }
+      table th {
+        height: 30px;
+        font-size: 1.8vw;
+      }
+
+      table td {
+      font-size: 1.3vw;
+        height: 70px;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      #modal-main {
+        width: 60%;
+        left: 20%;
+      }
+     #modal-main p {
+       font-size: 1.5vw;
+     }
+      .tap {
+        display: none
+      }
+      .click {
+        display: block;
+        font-size: 2.5vw
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+    <div class="container">
+      <div id="modal-main">
+
+        <p id="modalTitle">
+
+        </p>
+        <p id="modalText"></p>
+        <a href="https://line.me/R/ti/p/%40pis5493b" target="_blank" class="btn-square-shadow">参加希望の方はこちら</a>
+
+      </div>
+
+      <div class="label">ラビット　新歓カレンダー</div>
+      <img src="http://rabbitalpineskiteam.web.fc2.com/file/imgs/new/welcome.jpg" width="100%">
+		<p class="tap">
+          気になるイベントをタップしてみよう
+      </p>
+      <p class="click">
+          気になるイベントをクリックしてみよう
+      </p>
+      <div class="month">2019年　3月</div>
+      <table class="table table1">
+
+	         <tbody>
+              		<tr>
+                    <th>月</th>
+              			<th>火</th>
+              			<th>水</th>
+              			<th>木</th>
+              			<th>金</th>
+              			<th>土</th>
+              			<th>日</th>
+              		</tr>
+              		<tr>
+              			<td>25</td>
+              			<td>26</td>
+              			<td>27</td>
+              			<td class="event" id="tento">28<div class="eventName">東大テント列</div></td>
+              			<td class="event" id="tento">29<div class="eventName">東大テント列</div></td>
+              			<td><div style="color: blue">30</div></td>
+              			<td><div style="color: red">31<div></td>
+              		</tr>
+                </tbody>
+
+          </table>
+
+          <div class="month">2019年　4月</div>
+      <table class="table table2">
+
+	     <tbody>
+              		<tr>
+                    <th>月</th>
+              			<th>火</th>
+              			<th>水</th>
+              			<th>木</th>
+              			<th>金</th>
+              			<th>土</th>
+              			<th>日</th>
+              		</tr>
+              		<tr>
+              			<td class="event" id="saori">1　<div class="eventName">東大サーオリ</div></td>
+              			<td class="event" id="saori">2　<div class="eventName">東大サーオリ</div></td>
+              			<td>3</td>
+              			<td>4</td>
+              			<td class="event"  id="soru">5　<div class="eventName">食事会＠渋谷</div></td>
+              			<td><div style="color: blue">6</div></td>
+                      <td class="event" id="foot"><div style="color: red"><span style="color: red">7</span>　<div class="eventName">フットサル&食事会</div></div></td>
+              		</tr>
+              		<tr>
+              			<td class="event" id="sakura">8　<div class="eventName">夜桜@駒場野公園</div></td>
+              			<td class="event" id="tore">9　<div class="eventName">新歓トレ&食事会＠渋谷</div></td>
+              			<td>10</td>
+              			<td>11</td>
+              			<td class="event"　 id="sye">12　<div class="eventName">食事会＠渋谷</div></td>
+              			<td><div style="color: blue">13</div></td>
+              			<td ><div style="color: red">14</div></td>
+              		</tr>
+              		<tr>
+              			<td>15</td>
+              			<td class="event" id="tore">16　<div class="eventName">新歓トレ&食事会＠渋谷</div></td>
+              			<td>17</td>
+              			<td>18</td>
+              			<td class="event" id="gassyuku">19　<div class="eventName">新歓合宿</div></td>
+              			<td class="event" id="gassyuku"><span style="color: blue">20</span>　<div class="eventName">新歓合宿</div></td>
+              			<td class="event" id="gassyuku"><span style="color: red">21</span>　<div class="eventName">新歓合宿</div></td>
+              		</tr>
+              		<tr>
+              			<td>22</td>
+              			<td class="event" id="tore">23　<div class="eventName">新歓トレ&食事会＠渋谷</div></td>
+              			<td>24</td>
+              			<td>25</td>
+              			<td class="event" id="tore">26　<div class="eventName">新歓トレ&食事会@渋谷</div></td>
+              			<td><div style="color: blue">27</div></td>
+              			<td><div style="color: red">28<div></td>
+              		</tr>
+              		<tr>
+              			<td><div style="color: red">29<div></td>
+              			<td><div style="color: red">30<div></td>
+              			<td><div style="color: red">1<div></td>
+              			<td><div style="color: red">2<div></td>
+              			<td><div style="color: red">3<div></td>
+              			<td><div style="color: red">4</div></td>
+              			<td><div style="color: red">5<div></td>
+              		</tr>
+              	</tbody>
+              </table>
+
+              <div id="modal-bg"></div>
+
+    </div>
+
+<div class="appeal">
+<p id="tentoTitle">テント列@駒場キャンパス</p>
+<p id="tentoBody">最初の新歓イベントとなります。今年は正門近くの最後の方でテントを出す予定です。スライドやPV、アルバムを用意してお待ちしています。気軽に遊びに来てください。</p>
+
+<p id="saoriTitle">サークルオリエンテーション@11号館２階１１０８</p>
+<p id="saoriBody">東京大学の駒場キャンパスでサーオリを行います。テント列やビラではわからなかったことなどをじっくり聞く良い機会になります。ジュースやお菓子も用意しています。</p>
+
+
+<p id="footTitle">フットサル@吉祥寺</p>
+<p id="footBody">フットサル専門のコートを貸し切って、ワイワイ楽しくフットサルをします。ラビットで楽しく汗を流しましょう。終わった後は食事会へ出かけます。参加される方は1４時１5分に吉祥寺駅の中央改札に集合してください。</p>
+
+<p id="sakuraTitle">夜桜@駒場の公園</p>
+<p id="sakuraBody">駒場キャンパスの近くの公園で夜桜を見ながら皆でのんびりお話ししましょう。サークルのことでも大学生活のことでもなんでも気軽に質問してください。ジュースやお菓子も用意しています。参加される方は18時45分に駒場キャンパスの正門前に集合してください。</p>
+
+
+<p id="gassyukuTitle">新歓合宿@湯沢</p>
+<p id="gassyukuBody">新幹線で新潟のスキー場へ行き、プロのコーチや先輩に教わりながらスキーを体験する２泊3日の合宿です。道具も貸し出しが可能です。上級生や他の1年生と交流できるいい機会になると思います。参加費用も通常よりお得となっています。</p>
+
+   <p id="syeTitle">
+     新歓食事会@シェーキーズ（渋谷）
+   </p>
+   <p id="syeBody">
+     渋谷で美味しいご飯を食べながらのんびりお話をしましょう。聞きたいことや気になることは何でも聞いてください。参加される方は18時45分に駒場キャンパスの正門前か19時に渋谷マークシティ下に集合してください。
+   </p>
+   <p id="soruTitle">
+     新歓食事会@ソルアミーゴ（渋谷）
+   </p>
+   <p id="soruBody">
+     渋谷で美味しいご飯を食べながらのんびりお話をしましょう。聞きたいことや気になることは何でも聞いてください。参加される方は18時45分に駒場キャンパスの正門前か19時に渋谷マークシティ下に集合してください。
+   </p>
+
+<p id="toreTitle">新歓トレ＠駒場</p>
+<p id="toreBody">駒場キャンパスの陸上競技場でラビットが普段行なっているトレーニングを体験できます。運動しやすい服と靴を持ってご参加ください。トレ終了後は食事会を行います。ドタ参も大歓迎です。参加される方は18時45分に駒場キャンパスの正門前に集合してください。</p>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $(".event").click(function() {
+      const id = $(this).attr("id");
+
+      $("body").append('<div id="modal-bg"></div>');
+      $("#modal-bg,#modal-main").fadeIn("slow");
+
+      const title = $("#" + id + "Title").text();
+      const sentence = $("#" + id + "Body").text();
+
+      $("#modalTitle").text(title);
+      $("#modalText").text(sentence);
+
+      $("#modal-bg, #modal-main").click(function() {
+        $("#modal-bg, #modal-main").fadeOut("slow", function() {
+          $("#modal-bg").remove();
+        })
+      })
+    });
+  });
+</script>
+
+</body>

@@ -1,0 +1,55 @@
+.label {
+  color: white;
+  background-color: black;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 4vw;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 50px;
+
+}
+
+.kind {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 3vw;
+  border-radius: 3px;
+  border: solid 2px black;
+  background-color: white;
+  margin-top: 5px;
+}
+
+.table {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: none;
+  width: 100%;
+  text-align: center;
+  font-size: 2.1vw;
+  margin-left: 5%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th {
+  color: #FF9800;/*文字色*/
+  background: #fff5e5;/*背景色*/
+}
+
+th, td {
+  border: solid 1px black;
+}
+
+body {
+  background-image: url("../../imgs/iwatake2009.jpg");
+}
