@@ -1,3 +1,8 @@
+:root {
+  --color: red
+  kjljkl
+}
+
 .label {
   color: white;
   background-color: black;
@@ -28,17 +33,20 @@
   margin-top: 5px;
 }
 
-.table {
+table {
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  display: none;
   width: 100%;
   text-align: center;
   font-size: 2.1vw;
   margin-left: 5%;
   border-collapse: collapse;
   background-color: white;
+}
+
+.table {
+  display: none;
 }
 
 th {
@@ -50,6 +58,11 @@ th, td {
   border: solid 1px black;
 }
 
+#dammy {
+  display: none;
+  background-color: red;
+  width: 100%;
+}
 body {
   background-image: url("../../imgs/iwatake2009.jpg");
 }

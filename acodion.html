@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Calendar</title>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <style>
+    ul.navi {
+      width: 220px;
+      margin: 0px;
+    }
+
+    ul.navi, ul.menu {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .category {
+      margin-top: 5px;
+      height: 40px;
+      line-height: 40px;
+      background-color: blue;
+      cursor: pointer;
+    }
+
+    .menu a {
+      display: block;
+      height: 35px;
+      line-height: 35px;
+      color: #fff5e5;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <ul class="navi">
+
+    <li>
+          <div class="category">ファッション</div>
+          <ul class="menu">
+            <li><a href="11">アウター</a></li>
+            <li><a href="12">アウター</a></li>
+            <li><a href="13">アウター</a></li>
+            <li><a href="14">アウター</a></li>
+          </ul>
+
+    </li>
+
+    <li>
+          <div class="category">インテリア</div>
+          <ul class="menu">
+            <li><a href="21">アウター</a></li>
+            <li><a href="22">アウター</a></li>
+            <li><a href="23">アウター</a></li>
+            <li><a href="24">アウター</a></li>
+          </ul>
+
+    </li>
+
+    <li>
+          <div class="category">ステーショナリー</div>
+          <ul class="menu">
+            <li><a href="31">アウター</a></li>
+            <li><a href="32">アウター</a></li>
+            <li><a href="33">アウター</a></li>
+            <li><a href="34">アウター</a></li>
+          </ul>
+
+    </li>
+
+    <li>
+          <div class="category">生活雑貨</div>
+          <ul class="menu">
+            <li><a href="41">アウター</a></li>
+            <li><a href="42">アウター</a></li>
+            <li><a href="43">アウター</a></li>
+            <li><a href="44">アウター</a></li>
+          </ul>
+
+    </li>
+  </ul>
+
+</body>
+
+<!-- hideされると自動的に中のdisplayがnoneになるということですか？　はいそうです -->
+<!-- 一旦全部隠すのは俺と同じやり方だ +thisで隣接を確認している -->
+<!-- スライドアップとスライドダウンが同じスピードだから結果的にアコーディオンに見える -->
+<!-- cssの中で　　background: url("fsdjfklsdjf.gif");という書き方があるのだよ -->
+<script type="text/javascript">
+  $(function() {
+
+    $("ul.menu").hide();
+
+    $(".category").click(function() {
+
+      $("ul.menu").slideUp();
+      if ($("+ul", this).css("display") == "none") {
+        $("+ul", this).slideDown();
+      }
+
+    })
+
+    $("ul.menu li").mouseover(function() {
+
+      $(this).css("background-color", "red");
+    }).mouseout(function() {
+      $(this).css("background-color", "white");
+    })
+
+  });
+
+
+</script>
+
+
+
+  </html>
